@@ -1,0 +1,39 @@
+{% extends 'base.html' %}
+{% block title %}{{projectdetail.slug|title}}{% endblock title %}
+
+
+
+{% block home %}
+<div id="modal" class="max-sm:mt-10 h-screen w-full relative py-4 px-4 top-0 bottom-0 right-0 left-0 z-40 bg-black-300 flex flex-col justify-center">
+    <div class="w-2/3 self-center"><a href="{% url 'portfolio' %}#projects" class="px-2 text-2xl text-black bg-teal-100 hover:bg-teal-500 trans-1 rounded-lg">BACK</a></div>
+    <div id="modal_content" class="flex flex-col self-center w-full sm:w-2/3 border bg-gray-300 rounded-lg">
+        <div class="flex max-sm:flex-col">
+            <div class="flex-1 g-transparent p-2"><img src="{{projectdetail.mugshot.url}}" alt="{{projectdetail.slug}}" class="w-full rounded-lg"></div>
+            <div class="flex-1 flex items-center px-4 max-sm:mt-4 max-sm:border-b border-black">
+                <div class="flex-1 flex flex-col items-center">
+                    <div class="flex mb-2">
+                        <div class="mr-2"><i class="fas fa-file-alt fa-lg"></i></div>
+                        <div><p class="text-black font-bold">{{projectdetail.slug}}</p></div>
+                    </div>
+                    <div class="flex mb-2">
+                        <div class="mr-2"><i class="fas fa-toolbox fa-lg"></i></div>
+                        <div class="flex flex-wrap items-end">
+                        {% for tool in projectdetail.toolset.all %}
+                        <a href="{{tool.link}}" target="blank" class="px-2 mr-2 mb-2 rounded-lg bg-black hover:bg-blue-200 hover:text-black trans-1 text-white text-xs">{{tool}}</a>
+                        {% endfor %}
+                        </div>
+                    </div>
+                    <div class="mb-2 flex-1 flex items-center justify-start ml-6">
+                        <p class="px-2 {% if projectdetail.status == 'Completed' %} bg-green-700 {% else %} bg-red-700{% endif %} text-lg text-white rounded-lg">
+                            <i class="flex-initial py-1 fas {% if projectdetail.status == 'Completed' %} fa-check-circle {% else %} fa-cog {% endif %}"></i> {{projectdetail.status}}
+                        </p>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="py-2 px-4">
+            <div><p class="text-lg text-black-200 font-bold text-justify tracking-widest">{{projectdetail.summary}}</p></div>
+        </div>
+    </div>
+</div>
+{% endblock home %}

@@ -1,0 +1,81 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>{% block title %}BASE FILE{% endblock title %}</title>
+    <link rel="shortcut icon" href="{% static 'stylesheet/images/favicon.png' %}" type="image/png">
+    <link rel="stylesheet" href="{% static 'stylesheet/tailwind.min.css' %}">
+    <script src="https://kit.fontawesome.com/caac272d42.js" crossorigin="anonymous"></script>
+</head>
+<body>
+
+<div id="container" class="w-screen h-screen bg-black-300 overflow-auto scroll-smooth">
+    <!-- NAVIGATION -->
+    <div id="" class="w-screen bg-black fixed top-0 flex flex-col sm:h-screen sm:w-12 z-50">
+
+        <div class="relative flex-shrink-0 bg-black justify-between shadow-xl max-sm:flex z-40">
+        
+            <div class="bg-white-400">
+                <img src="{% static 'stylesheet/images/wrut.png' %}" alt="logo" class="w-10 sm:w-12">
+            </div>
+        
+            <div class="hidden max-sm:flex mx-2 trans-1">
+                <button id="drop-btn" class="w-full text-2xl text-white hover:bg-black-300 px-2"><i class="fas fa-ellipsis-h fa-lg"></i></button>
+            </div>
+        
+        </div>
+        <div id="drop-cnt" class="max-sm:absolute z-30 max-sm:w-full flex-1 flex justify-around sm:flex-col bg-black trans-1">
+            <div class="block">
+                <a href="{% url 'portfolio' %}#home" id="drop-linq" class="block text-center text-white-400 hover:text-blue-500 hover:bg-black-300 py-2 px-4 sm:py-3 sm:px-0">
+                    <i class="fas fa-home fa-lg"></i>
+                </a>
+            </div>
+            <div class="block">
+                <a href="{% url 'portfolio' %}#about" id="drop-linq" class="block text-center text-white-400 hover:text-blue-500 hover:bg-black-300 py-2 px-4 sm:py-3 sm:px-0">
+                    <i class="fas fa-user fa-lg"></i>
+                </a> 
+            </div>
+            <div class="block">
+                <a href="{% url 'portfolio' %}#projects" id="drop-linq" class="block text-center text-white-400 hover:text-blue-500 hover:bg-black-300 py-2 px-4 sm:py-3 sm:px-0">
+                    <i class="fas fa-cogs fa-lg"></i>
+                </a>
+            </div>
+            <div class="block">
+                <a href="{% url 'portfolio' %}#skills" id="drop-linq" class="block text-center text-white-400 hover:text-blue-500 hover:bg-black-300 py-2 px-4 sm:py-3 sm:px-0">
+                    <i class="fas fa-toolbox fa-lg"></i>
+                </a>
+            </div>
+            <div class="block">
+                <a href="{% url 'portfolio' %}#contact" id="drop-linq" class="block text-center text-white-400 hover:text-blue-500 hover:bg-black-300 py-2 px-4 sm:py-3 sm:px-0">
+                    <i class="fas fa-comments fa-lg"></i>
+                </a>
+            </div>
+        </div>
+    </div>
+    
+    <!-- BODY -->
+    <div id="body" class="sm:ml-12">    
+    {% block home %}{% endblock home %}
+    {% block about %}{% endblock about %}
+    {% block project %}{% endblock project %}
+    {% block skill %}{% endblock skill %}
+    {% block contact %}{% endblock contact %}
+    </div>
+
+    <div id="footer" class="sm:ml-12">
+        {% block footer %}{% endblock footer %}
+    </div>
+
+</div>
+
+<div>
+<!-- SCRIPTS -->
+{% block scripts %}
+<script type="text/javascript" src="{% static 'javascript/effect.js' %}"></script>
+{% endblock scripts %}
+</div>
+</body>
+</html>

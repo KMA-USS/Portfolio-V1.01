@@ -1,0 +1,241 @@
+{% extends '../base.html' %}
+{% load static %}
+{% block title %}My Portfolio{% endblock %}
+
+
+{% block home %}
+<!-- HOME -->
+<div id="home" class="mt-8 overflow-auto sm:mt-0">
+    <!-- INTRO -->
+    <div class="h-screen bg-black-300 flex max-md:flex-col">
+        <!-- TEXT -->
+        <div id="" class="flex-1 px-4 flex flex-col justify-center">
+            <div class="flex items-center justify-center">
+                <div>
+                    <h3 class="p-2 text-2xl sm:text-4xl text-white-400 font-frosty tracking-widest">FRONT END -> </h3>
+                </div>
+                <div>
+                    <h3 class="p-2 text-2xl sm:text-4xl text-white-400 font-sf tracking-widest">
+                        <- BACK END</h3> </div> </div> <div class="flex flex-col justify-center">
+                            <div class="self-center">
+                                <h1 class="text-4xl sm:text-6xl tracking-widest text-white font-penguin">FULLSTACK</h1>
+                            </div>
+                            <div class="pl-16 sm:pl-20 max-400:pl-8">
+                                <div>
+                                    <div>
+                                        <div class="text-lg text-white tracking-widest font-sfbdi underline">There</div>
+                                    </div>
+                                    <div>
+                                        <div class="text-lg text-white tracking-widest font-sfbdi underline">is more
+                                        </div>
+                                    </div>
+                                    <div>
+                                        <div class="text-lg text-white tracking-widest font-sfbdi underline">to live
+                                            than</div>
+                                    </div>
+                                    <div>
+                                        <div class="text-lg text-white tracking-widest font-sfbdi underline">just hard
+                                            copies.</div>
+                                    </div>
+                                </div>
+                            </div>
+                </div>
+            </div>
+            <!-- LOGO -->
+            <div class="flex-1 flex justify-center">
+                <img src="{% static 'stylesheet/images/wrut.png' %}" class="">
+            </div>
+        </div>
+</div>
+{% endblock home %}
+
+
+{% block about %}
+<!-- ABOUT -->
+<div id="about">
+        <div class="h-screen overflow-auto bg-black-300 p-2 flex flex-col bg-fixed bg-no-repeat bg-cover"
+            style="background-image: url('../static/stylesheet/images/code5.jpg')">
+            <div id="" class="flex border-b border-gray-600">
+                <h1 class="text-white-300 font-sf text-5xl">ABOUT</h1>
+            </div>
+            <div class="flex flex-col items-center justify-between my-auto">
+                <div class="mb-4 flex flex-col items-center">
+                    <div>
+                        <h1 class="text-4xl text-white-200 font-smrdbi">Hay Good Day,</h1>
+                    </div>
+                    <div class="">
+                        <p class="text-xs sm:text-2xl text-white-200 font-smrdbi capitalize mb-1 max-sm:flex max-sm:flex-col max-sm:items-center">
+                            <code class="font-smrdbi">my name is kelvin mayowa ayeni</code>
+                            <code class="text-xs sm:text-lg rounded-sm text-white px-2 bg-black-100">alias: unruly Strong Soul.</code>
+                        </p>
+                    </div>
+                    <div class="">
+                        <p class="text-xs sm:text-2xl text-white-200 font-smrdbi capitalize mb-1 max-sm:flex max-sm:flex-col max-sm:items-center">
+                            <code class="font-smrdbi">a fullstack web developer based in</code>
+                            <code class="text-xs sm:text-lg rounded-sm text-white px-2 bg-black-100">nigeria.</code></p>
+                    </div>
+                    <div class="">
+                        <p class="text-xs sm:text-2xl text-white-200 capitalize mb-1 max-sm:flex max-sm:flex-col max-sm:items-center">
+                            <code class="font-smrdbi">you looking to turn your</code> 
+                            <code class="text-xs sm:text-lg rounded-sm text-white px-2 bg-black-100">business</code>
+                            <code class="font-smrdbi">into a</code> 
+                            <code class="text-xs sm:text-lg rounded-sm text-white px-2 bg-black-100">company?</code>
+                        </p>
+                    </div>
+                    <div class="">
+                        <p class="text-xs sm:text-2xl text-white-200 font-smrdbi capitalize">or have you got ideas that
+                            needs to be turned into reality?</p>
+                    </div>
+                </div>
+                <div class="">
+                    <div class=""><a href="#contact"
+                            class="bg-blue-400 hover:bg-blue-600 trans-1 rounded shadow-lg px-4 py-2 capitalize text-white text-sm block">Hit
+                            Me Up</a></div>
+                </div>
+            </div>
+        </div>
+</div>
+{% endblock about %}
+
+
+{% block project %}
+<!-- PROJECTS -->
+<div id="projects">
+    <div class="h-full bg-black-300 p-2">
+        <div id="" class="flex-1 flex border-b border-gray-600">
+            <h1 class="text-white-300 font-sf text-5xl">PROJECTS</h1>
+        </div>
+        <div class="py-2 w-full flex sm:flex-wrap sm:justify-around max-sm:overflow-x-scroll max-sm:scrolling-hidden">
+            {% for project in projectlist %}
+            <div id="projects" class="flex-shrink-0 flex flex-col w-full md:w-5/12 shadow-lg mr-4 my-2">
+                <div class="relative">
+                    <div class=""><img src="{{project.mugshot.url}}" alt="" class="w-full rounded-tl-lg rounded-tr-lg"></div>
+                    <div class="flex-1 flex items-center justify-end absolute top-0 right-0 m-2  shadow-lg">
+                        <p class="px-2 {% if project.status == 'Completed' %} bg-green-700{% else %} bg-yellow-700{% endif %} text-white text-xs rounded-lg">
+                            <i class="fas {% if project.status == 'Completed' %} fa-check-circle {% else %} fa-cog {% endif %}fa-sm"></i> {{project.status}}
+                        </p>
+                    </div>
+                </div>
+                <div class="flex-grow flex flex-col justify-center p-2 bg-black">
+                    <div class="mb-1">
+                        <i class="fas fa-file-alt fa-lg mr-2 text-white"></i>
+                        <span class="text-lg text-gray-400">{{project.slug}}</span>
+                    </div>
+                    <div class="mb-1 border-t border-gray-700 ">
+                        <i class="fas fa-expand fa-lg mr-2 text-white"></i>
+                        <a href="{% url 'projectdetail' project.slug %}" class="text-lg text-blue-700 hover:underline">See more details</a>
+                    </div>
+                    <div class="flex border-t border-gray-700 py-2">
+                        <div class="mr-1"><i class="fas fa-toolbox fa-lg mr-1 text-white"></i></div>
+                        <div class="flex flex-wrap items-center">
+                            {% if project.toolset.all|length > 0 %}
+                                {% for tool in project.toolset.all %}
+                                <span class="text-xs px-1 bg-blue-200 text-black ml-1 mb-1 rounded-lg">{{tool}}</span>
+                                {% endfor %}
+                            {% endif %}
+                        </div>
+                    </div>
+                </div>
+            </div>
+            {% endfor %}
+        </div>
+    </div>
+</div>
+{% endblock project %}
+
+
+{% block skill %}
+<!-- SKILLS/TOOLSET -->
+<div id="skills">
+    <div class="h-full bg-black-300 p-2">
+        <div id="" class="flex-1 flex border-b border-gray-600">
+            <h1 class="text-white-300 font-sf text-5xl">SKILLS</h1>
+        </div>
+        <div class="px-8 py-4 flex flex-col items-center max-sm:px-4">
+        {% for skills in toolset %}
+            {% if skills.skill_set.count > 0 %}
+            <div class="flex flex-col bg-teal-100 w-full sm:my-4 max-sm:my-2 sm:w-2/3 rounded-lg">
+                <div class="flex-1 flex border-b border-black-100"><h1 class="justify-start text-black-100 font-extrabold text-2xl p-4">{{skills|title}}</h1></div>
+                <div class="flex-1 flex flex-wrap sm:justify-start max-sm:justify-around">
+                    {% for skill in skills.skill_set.all %}
+                    <div class="m-4">
+                        <a href="{{skill.link}}" target="_blank"><img src="{{skill.image.url}}" alt="{{skill.name}}" class="w-full sm:w-1/2"></a>
+                        <div class=""><span class="font-bold text-black">{{skill}}</span></div>
+                    </div>
+                    {% endfor %}
+                </div>
+            </div>
+            {% endif %}
+        {% endfor %}
+        </div>
+    </div>
+</div>    
+{% endblock skill %}
+
+
+{% block contact %}
+<!-- CONTACT -->
+<div id="contact">
+    <div class="h-full bg-black-300 p-2">
+        <div id="" class="flex-1 flex border-b border-gray-600">
+            <h1 class="text-white-300 font-sf text-5xl">CONTACT</h1>
+        </div>
+        <div class="py-10 px-10 max-sm:px-4"> 
+            <div class="flex flex-col bg-red-300 w-full sm:w-2/3 mx-auto">
+                <div class="flex flex-col">
+                    {% if form.non_field_errors %}
+                        {% for error in form.non.field.errors %}
+                        <span class="text-sm p-2 bg-red-500 text-black border border-gray-900 rounded-sm">{{error}}</span>
+                        {% endfor%}
+                    {% endif %}
+                </div>
+                <form action="" method="post" class="flex flex-col p-2 bg-gray-300">
+                    {% csrf_token %}
+                    <div class="flex flex-col">
+                        <div class="flex border-b border-black mb-2">
+                            <div class="flex-1 border-r border-black"><h1 class="text-2xl p-2 font-bold text-black text-center">Contact Me</h1></div>
+                            <div class="flex-1 border-l border-black flex justify-center items-center">
+                                <div class="flex">
+                                    <div class="mr-2"><a href="" class="text-black hover:text-blue-600 trans-1"><i class="fab fa-facebook fa-lg"></i></a></div>
+                                    <div class="mr-2"><a href="" class="text-black hover:text-blue-600 trans-1"><i class="fab fa-twitter fa-lg"></i></a></div>
+                                    <div class="mr-2"><a href="" class="text-black hover:text-blue-600 trans-1"><i class="fab fa-instagram fa-lg"></i></a></div>
+                                    <div><i class="fab fa-whatssapp fa-lg text-white"></i></div>
+                                </div>
+                            </div>
+                        </div>
+                        {% for field in form %}
+                        <div class="mb-2 {% if field.errors %} border border-red-600 rounded-sm {% endif %}">
+                            <div class="">
+                                <!-- <div class="sm:mr-3"><p class="text-black text-lg">{{field.label_tag}}</p></div> -->
+                                <div class="flex flex-col">
+                                    <div class="mb-1 overflow-hidden">{{field}}</div>
+                                    {% if field.errors %}
+                                    <div class="flex flex-col">
+                                        {% for error in field.errors %}
+                                        <span class="text-sm bg-red-400 text-black p-2 rounded-sm"><i class="fas fa-info-circle fa-lg mr-1"></i>{{error}}</span>
+                                        {% endfor %}
+                                    </div>
+                                    {% endif %}
+                                </div>
+                            </div>
+                        </div>
+                        {% endfor %}
+                    </div>
+
+                    <div class="my-2 flex">
+                        <input type="submit" value="Send" class="flex-1 py-2 trans-1 text-white font-extrabold cursor-pointer text-center bg-green-500 hover:bg-green-700">
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+    
+</div>
+{% endblock contact %}
+
+
+{% block footer %}
+<div class="bg-black-300 p-2 flex justify-end">
+    <p class="text-sm text-white font-extrabold tracking-widest">UNRULY STRONG SOCIETY&TRADE;</p>
+</div>
+{% endblock footer %}
