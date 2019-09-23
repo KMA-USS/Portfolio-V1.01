@@ -23,7 +23,8 @@ class HomeView(FormMixin, TemplateView):
             subject = form.cleaned_data.get('subject', '')
             content = form.cleaned_data.get('message', '')
             from_email = form.cleaned_data.get('email', '')
-                
+
+            # Added the senders email address to the message
             message = "New message from: %s \nContent: %s" % (from_email, content)
 
             send_mail(subject, message, from_email, ['kelvinmayoayeni@gmail.com'])
