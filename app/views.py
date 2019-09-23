@@ -21,8 +21,10 @@ class HomeView(FormMixin, TemplateView):
         form = self.form_class(request.POST or None)
         if form.is_valid():
             subject = form.cleaned_data.get('subject', '')
-            message = form.cleaned_data.get('message', '')
+            content = form.cleaned_data.get('message', '')
             from_email = form.cleaned_data.get('email', '')
+                
+            message = "New message from: %s \nContent: %s" % (from_email, content)
 
             send_mail(subject, message, from_email, ['kelvinmayoayeni@gmail.com'])
             return redirect('/#contact')
