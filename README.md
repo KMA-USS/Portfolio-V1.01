@@ -1,5 +1,5 @@
 # First ever web portfolio
-This is my first ever web portfolio as a web developer.
-Created and to be launched very soon.
+<p>This is my first ever web portfolio as a full stack developer.</p>
 <a href="http://unruly.pythonanywhere.com" target="_blank">Unruly Portfolio</a>
-🖐️You take sole responsibility for clicking this link and all content within the page therein.
+<p>🖐️You take sole responsibility for clicking this link and all content viewed within the page therein.</p>
+<b>Do not judge as this was the founding foundation of tomorrow :)</b>
